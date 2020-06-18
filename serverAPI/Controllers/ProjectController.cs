@@ -14,12 +14,12 @@ namespace serverAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class ProjectController : ControllerBase
     {
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<ProjectController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public ProjectController(ILogger<ProjectController> logger)
         {
             _logger = logger;
         }
