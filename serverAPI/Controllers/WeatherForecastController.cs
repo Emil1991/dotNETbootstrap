@@ -16,10 +16,6 @@ namespace serverAPI.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
         private readonly ILogger<WeatherForecastController> _logger;
 
@@ -48,7 +44,7 @@ namespace serverAPI.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("posts/{id}")]
         public async Task<List<Post>> GetPost(int id)
         {
             // var model = new SearchModel();
@@ -62,14 +58,36 @@ namespace serverAPI.Controllers
                         //get the json result from your api
                         var result = await content.ReadAsStringAsync();
                         var jRes = JsonConvert.DeserializeObject<List<Post>>(result);
-                        List<Post> userPosts=new List<Post>();
+                        List<Post> userPosts = new List<Post>();
 
-                        foreach(Post p in jRes){
-                            if(p.userId==id){
+                        foreach (Post p in jRes)
+                        {
+                            if (p.userId == id)
+                            {
                                 userPosts.Add(p);
                             }
                         }
                         return userPosts;
+                    }
+                }
+            }
+        }
+
+        [HttpGet("pics")]
+        public async Task<List<Picture>> GetPics()
+        {
+            // var model = new SearchModel();
+            var url = "https://jsonplaceholder.typicode.com/photos";
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync(url))
+                {
+                    using (var content = response.Content)
+                    {
+                        //get the json result from your api
+                        var result = await content.ReadAsStringAsync();
+                        var jRes = JsonConvert.DeserializeObject<List<Picture>>(result);
+                        return jRes;
                     }
                 }
             }
