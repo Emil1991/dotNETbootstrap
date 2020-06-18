@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
-
+using System.IO;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace serverAPI.Controllers
 {
@@ -27,10 +29,10 @@ namespace serverAPI.Controllers
         }
 
         [HttpGet]
-public  async Task<JsonResult> Get()
+public  async Task<List<User>> Get()
 {
     // var model = new SearchModel();
-    var url = "https://jsonplaceholder.typicode.com/users";//it should be the url of your api
+    var url = "https://jsonplaceholder.typicode.com/users";
     using (var httpClient = new HttpClient())
     {
         using (var response = await httpClient.GetAsync(url))
@@ -39,6 +41,19 @@ public  async Task<JsonResult> Get()
             {  
                //get the json result from your api
                 var result = await content.ReadAsStringAsync();
+                // JObject[] values = JsonConvert.DeserializeObject<JObject[]>(result);
+                var jRes=JsonConvert.DeserializeObject<List<User>>(result);
+//                 var jRes=JArray.Parse(result);
+//                 foreach (JObject o in jRes.Children<JObject>())
+//                     {
+//                          foreach (JProperty p in o.Properties())
+//                             {
+//                              var name = p.Name;
+//                             var value = p.Value;
+//                             Console.WriteLine(name + " -- " + value);
+//     }
+// }
+                // var result = await content.ReadAsStreamAsync();
                 // var root = (JObject)JsonConvert.DeserializeObject(result);
                 // var root = (JObject)JsonConvert.DeserializeObject(result);
                 // var items = root.SelectToken("responseHeader").Children().OfType<JProperty>().ToDictionary(p => p.Name, p => p.Value);
@@ -70,7 +85,7 @@ public  async Task<JsonResult> Get()
                 //         }
                 //     }
                 // }
-                return new JsonResult(result);
+                return jRes;
             }
         }
     }

@@ -18,3 +18,6 @@ C:\dotnet\dotNETbootstrap\serverAPI\obj\Debug\netcoreapp3.1\staticwebassets\serv
 C:\dotnet\dotNETbootstrap\serverAPI\obj\Debug\netcoreapp3.1\serverAPI.dll
 C:\dotnet\dotNETbootstrap\serverAPI\obj\Debug\netcoreapp3.1\serverAPI.pdb
 C:\dotnet\dotNETbootstrap\serverAPI\obj\Debug\netcoreapp3.1\serverAPI.genruntimeconfig.cache
+C:\dotnet\dotNETbootstrap\serverAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\dotnet\dotNETbootstrap\serverAPI\obj\Debug\netcoreapp3.1\serverAPI.csproj.CopyComplete
+C:\dotnet\dotNETbootstrap\serverAPI\bin\Debug\netcoreapp3.1\Json.dll
