@@ -16,7 +16,7 @@ namespace serverAPI
         [JsonProperty("email")]
          public string email { get; set; }
 
-        [JsonProperty("adress")]
-        public Adress adress{get;set;}
+        [JsonProperty("address")]
+        public Address adress{get;set;}
     }
 }

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace serverAPI
 {
-    public class Adress
+    public class Address
     {
         [JsonProperty("street")]
         public string street{get;set;}
